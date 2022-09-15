@@ -1,0 +1,55 @@
+{% capture icon_set %}
+{% if settings.toggle_icon_style == 'carets' %}
+{% render 'icon',
+          name: 'down-caret',
+icon_class: 'icon--rotate'
+%}
+{% else %}
+{% render 'icon',
+          name: 'plus',
+icon_class: 'icon--active'
+%}
+{% render 'icon', name: 'minus' %}
+{% endif %}
+{% endcapture %}
+
+<div id="shopify-section-page-faq__main" class="shopify-section faq-template-section jsFAQ">
+  <script data-theme-editor-load-script="" src="{{ 'z__jsFAQ.js' | asset_url }}"></script>
+</div> 
+
+<dl class="{{ section.settings.css_class }} faq-accordion accordion-icon--{{ settings.toggle_icon_style }}">
+
+  <dt>
+    <button class="accordion-style--{{ settings.toggle_icon_style }} accordion__button" type="button" aria-controls="panel-shipping" aria-expanded="false">
+      {{ icon_set }}
+      Shipping
+    </button>
+  </dt>
+  <dd id="panel-shipping" aria-hidden="true">
+    <div class="content">
+      {{ shop.shipping_policy }}
+    </div>
+  </dd>
+  <dt>
+    <button class="accordion-style--{{ settings.toggle_icon_style }} accordion__button" type="button" aria-controls="panel-returns" aria-expanded="false">
+      {{ icon_set }}
+      Returns
+    </button>
+  </dt>
+  <dd id="panel-returns" aria-hidden="true">
+    <div class="content">
+      {{ shop.refund_policy }}
+    </div>
+  </dd>
+
+</dl>   
+
+{% style %}
+
+.faq-accordion { margin-top: 20px; margin-bottom: 40px; }
+
+@media screen and (max-width: 480px) {
+	.icon img, .icon svg { height: 100%; }
+}
+
+{% endstyle %}
