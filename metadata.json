@@ -10,7 +10,7 @@
         "sections": [
             "sections/product__accordion.liquid"
         ],
-        "snippets": [],
+        "snippets": ["snippets/product-accordion.liquid"],
         "assets": []
     },
     "available": true,
